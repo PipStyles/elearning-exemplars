@@ -1,0 +1,13 @@
+<?php //print_r($this->messages); ?>
+
+
+<?php if(is_array($this->messages)) { ?>
+<ol>
+<?php foreach($this->messages as $field => $messages) { ?>
+	<?php foreach($messages as $validator => $message) { ?>
+	<li><?php echo $field; ?>: <?php echo $message; ?></li>
+	<?php } ?>
+<?php } ?>
+</ol>
+<?php } ?>
+

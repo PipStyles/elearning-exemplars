@@ -1,0 +1,13 @@
+<?php 
+$object = array();
+foreach($this->rowset as $row)
+{
+	$object[$row->countryId]['country'] = $row->country;
+	$object[$row->countryId]['cnLat'] = $row->cnLat;
+	$object[$row->countryId]['cnLng'] = $row->cnLng;
+	$object[$row->countryId]['items'][] = array('primaryId'=>$row->primaryId ,'title' => $row->title);
+	
+}
+echo Zend_Json_Encoder::encode($object);
+
+?>

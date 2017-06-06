@@ -1,0 +1,12 @@
+<?php
+if(@!$this->isEdit) $this->isEdit = false;
+
+foreach($this->row->getManyToManyRowsets() as $mmClass => $mmRowset)
+{ 
+	$mmCat = get_class($mmRowset->getTable());
+	if(count($mmRowset) || $this->isEdit)
+	{
+	echo $this->partial('edit/mmSet.phtml', array('rowset' => $mmRowset, 'srcRow' => $this->row, 'isEdit' => $this->isEdit));
+	}
+}
+?>

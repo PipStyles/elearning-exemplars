@@ -1,0 +1,12 @@
+<?php
+$mmCat = get_class($this->rowset->getTable());
+?>
+<h5><?php if(@$this->isEdit) { ?><a href="#" onclick="launchMMEdit('<?php echo get_class($this->srcRow->getTable()) ?>', '<?php echo $this->srcRow->getID(); ?>' , '<?php echo $mmCat?>' )" title="edit connections to <?php echo $this->rowset->getTable()->getPlural(); ?>" ><img src="/images/icons/table_edit.png" /></a>  <?php } ?><img src="<?php echo $this->rowset->getTable()->getIconSmall(); ?>" /> <?php echo $this->rowset->getTable()->getPlural(); ?></h5>
+<div class="scroll" >
+<ul>
+	<?php 
+	foreach($this->rowset as $mmRow) { ?>
+	<li><a href="/detail/show/cat/<?php echo $mmCat; ?>/id/<?php echo $mmRow->getID(); ?>" ><?php echo $mmRow->getTitle(); ?></a></li>
+<?php	} ?>
+</ul>
+</div>

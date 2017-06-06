@@ -1,0 +1,8 @@
+<?php 
+$items = array();
+foreach($this->rowset as $row) {
+	$rowArray = $row->toArray();
+	$items[] = Zend_Json_Encoder::encode($rowArray);
+}
+echo '['.implode(',',$items).']';
+?>

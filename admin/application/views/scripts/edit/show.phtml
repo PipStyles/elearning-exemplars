@@ -1,0 +1,61 @@
+<?php
+// edit/show
+$model = $this->row->getTable();
+$cat = get_class($model);
+
+?>
+<?php if($this->row->getTable()->hasImage() && $this->isEditing) { ?>
+<div id="div-edit-image" >
+	<a class="edit-image-link" href="javascript:launchImageEdit('<?php echo $this->url(array('controller'=>'edit','action'=>'image','id'=>$this->row->getID(),'cat'=>$cat)); ?>');" title="edit this <?php echo $model->getSingular(); ?>'s image" >
+  <img class="detail-thumb" src="<?php echo $this->row->getThumb(); ?>" alt="<?php echo $this->row->getTitle(); ?>" />
+  </a>
+</div>
+<?php } ?>
+
+
+<h2 id="detail-heading" ><?php if($this->row->getID() && $this->isEditing) { ?>
+  Edit: <?php echo $this->row->getTitle(); ?>
+<?php } else { ?>
+  Add: <?php echo $model->getSingular(); 
+} ?></h2>
+
+<div class="edit-forms" >
+	
+	<div class="edit-form" >
+		<?php echo $this->form->render(); ?>
+	</div>
+	
+	<?php if(isset($this->descForm)) { ?>
+	<h3 class="sub-edit-heading" ><?php echo $this->descRow->getTable()->getSingular(); ?> information: </h3>
+	<div class="edit-form" >
+		<?php echo $this->descForm->render(); ?>
+	</div>
+	<?php } ?>
+  
+  <?php if(isset($this->descRow) && $this->descRow->getTable()->hasFiles())
+	{
+		echo $this->partial('edit/editFiles.phtml', array('row'=>$this->descRow, 'files'=>$this->descRow->getFiles()));
+	} ?>
+  
+  <div id="detail-mmSets" >
+    <?php if($this->row->getID()) { echo $this->partial('edit/mmSets.phtml', array('row' => $this->row, 'isEdit' => true)); } ?>
+  </div>
+  
+  <div style="height:10em;" >&nbsp;</div>
+</div>
+
+<div id="edit-controls" class="fixed-footer" >
+	<h3><?php echo $this->row->getID() ? 'edit '.$model->getSingular().': '.$this->row->getTitle() : 'Add '.$model->getSingular(); ?></h3>
+	<?php if($this->saved) { ?><p class="hint" ><img src="<?php echo ICON_PATH; ?>/tick.png" alt="saved" /> saved at <?php echo date('H:i:s d/m/Y'); ?> by <?php echo $this->user->username; ?>.</p><?php } ?>
+	<ul>
+		<li><a href="<?php echo $this->url(array('controller'=>'list','action'=>'show','cat'=> $cat), null, true); ?>" class="button back-button" >back to list</a></li>
+		<li><a onclick="document.getElementById('form-edit-form').submit();" class="button save-button" >save</a></li>
+		<?php if($this->row->getID()) { ?>
+		<li><a href="<?php echo $this->url(array('controller'=>'edit','action'=>'show','cat'=>$cat),null,true); ?>" class="button add-button" >add</a></li>
+		<li><a href="<?php echo $this->url(array('controller'=>'edit','action'=>'delete','cat'=>$cat,'id'=>$this->row->getID())); ?>" class="button delete-button" >delete</a></li>
+		<?php } ?>
+		<?php if(!$this->row->getID()) { ?>
+		<li><a href="<?php echo $this->url(array('controller'=>'list','action'=>'show','cat'=>$cat)); ?>" class="button cancel-button" >cancel</a></li>
+		<?php } ?>
+	</ul>
+</div>

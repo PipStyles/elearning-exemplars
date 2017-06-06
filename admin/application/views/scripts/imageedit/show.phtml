@@ -1,0 +1,10 @@
+<h1>Edit Image</h1>
+<h2><?php echo $this->row->getTitle(); ?></h2>
+<p><img src="<?php echo $this->row->getImage(); ?>" /></p>
+<form action="/imageedit/update/cat/<?php echo get_class($this->row->getTable()); ?>/id/<?php echo $this->row->getID(); ?>"  method="post" >
+
+	<input class="text" type="file" name="image" />
+	<input class="button confirm-button" type="submit" name="submit" value="update" />
+
+</form>
+

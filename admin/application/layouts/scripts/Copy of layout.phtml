@@ -1,0 +1,84 @@
+<?php 
+// application/layouts/scripts/layout.phtml
+
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <?php echo $this->headTitle(); ?>
+  <?php echo $this->headLink(); ?>
+  <?php echo $this->headStyle(); ?>
+  <?php echo $this->headScript(); ?>
+  <script type="text/javascript" src="/tandl/js/dojo/dojo/dojo.js" djConfig="parseOnLoad:true" ></script>
+  <?php //echo $this->dojo(); ?>
+	
+</head>
+
+<body>
+<div id="IE6-warning" >
+ I see you're using IE6 there. It's not much fun, is it? (Please use Firefox, or at a least a sane version of Internet Explorer.)
+</div>
+
+
+<div id="container"  >
+
+	<div id="user-controls" >
+		<p><ul class="hz-buttons" >
+			<!-- <li><a href="<?php echo $this->url(array('controller'=>'user','action'=>'index','id'=>$this->user->user_id),null,true); ?>" class="button edit-button" >change password</a></li> 
+			<li><a href="<?php echo $this->url(array('controller'=>'logout','action'=>'index'),null,true); ?>" class="button logout-button" ><img src="<?php echo ICON_PATH; ?>/user_logout.png" />logout</a></li>-->
+		</ul></p>
+		<p class="hint" >User <?php echo $this->user->username; ?> logged in</p>
+	</div>
+
+<div id="header" >
+		
+		<h1><a href="<?php echo BASE.'/index/'; ?>" id="home-link" >Exemplify</a></h1>
+		
+		<div id="site-nav" >
+			
+			<ul class="hz-nav" id="site-nav-list" >
+				<li><a class="button list-button" href="<?php echo BASE; ?>/list/show/cat/Exemplar/" >Exemplars</a></li>
+				<li><a class="button list-button" href="<?php echo BASE; ?>/list/show/cat/Artefact/" >Artefacts</a></li>
+				<li>
+					<p><a href="<?php echo BASE; ?>/list/show/cat/ServiceArea/" >Service Areas</a></p>
+					<p><a href="<?php echo BASE; ?>/list/show/cat/Service/" >Services</a></p>
+				</li>
+				<li>
+					<p><a href="<?php echo BASE; ?>/list/show/cat/Theme/" >Theme</a></p>
+					<p><a href="<?php echo BASE; ?>/list/show/cat/SubTheme/" >Sub-theme</a></p>
+				</li>
+				<li>
+					<p><a href="<?php echo BASE.'/list/show/cat/Person/'; ?>" >People</a></p>
+					<?php if($this->user->userLevel == 4) { ?>
+					<p><a href="<?php echo BASE.'/list/show/cat/User/'; ?>" >Users</a></p>
+					<?php } ?>
+				</li>
+				
+				<li class="pad" >
+					<select id="uni-nav" onChange="window.location.href = this.value" >
+						<option class="title-option" >University structure:</option>
+						<option value="<?php echo BASE.'/list/show/cat/Course/'; ?>">Courses</option>
+						<option value="<?php echo BASE.'/list/show/cat/Discipline/'; ?>">Disciplines</option>
+						<option value="<?php echo BASE.'/list/show/cat/School/'; ?>">Schools</option>
+						<option value="<?php echo BASE.'/list/show/cat/Faculty/'; ?>">Faculties</option>
+					</select>
+				</li>
+				
+				<li class="pad" >
+					<select id="other-nav" onChange="window.location.href = this.value" >
+						<option class="title-option" >Other data:</option>
+						<option value="<?php echo BASE.'/list/show/cat/Tool/'; ?>">tools</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+</div>
+
+<div id="content" >
+	<?php echo $this->layout()->content ?>
+</div>
+
+</div>
+</body>
+</html>

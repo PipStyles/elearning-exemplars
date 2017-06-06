@@ -1,0 +1,15 @@
+<div id="login-box"  >
+	<?php echo $this->loginForm; ?>
+	<?php if(strlen($this->failed)) { ?>
+	<p><img src="<?php echo ICON_PATH; ?>/cross.png" /> <?php echo $this->failed; ?></p>
+	<?php } ?>
+	
+	<?php 
+	if($this->messages)
+	{ ?>
+	<p class="hint" >Are you sure you entered your username and password correctly?</p>
+	<?php
+	echo $this->partial('form/message-list.phtml', array('messages' => $this->messages)); 
+	}
+	?>
+</div>

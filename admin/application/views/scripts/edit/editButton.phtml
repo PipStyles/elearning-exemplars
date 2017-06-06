@@ -1,0 +1,5 @@
+<?php
+$cat = get_class($this->row->getTable());
+$id = $this->row->getID();
+?>
+	<a href="/edit/show/cat/<?php echo $cat; ?>/id/<?php echo $id; ?>" title="edit this record" ><img src="/images/icons/page_edit.png" /></a>

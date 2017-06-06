@@ -1,0 +1,9 @@
+<?php
+$rowset = $this->selectBuilder($this->model);
+?>
+<select name="<?php echo $this->fieldName; ?>" >
+	<?php foreach($rowset as $row) { ?>
+	<option value="<?php echo $row->getID(); ?>" ><?php echo $row->getTitle(); ?></option>
+	<?php } ?>
+</select>
+<input type="image" name="doProcess" value="setPublishStatus" src="<?php echo ICON_PATH; ?>/tick.png" />

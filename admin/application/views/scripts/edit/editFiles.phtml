@@ -1,0 +1,37 @@
+<h3>Files:</h3>
+<div class="scroll" id="edit-files" >
+	<?php if(@count($this->files->getFiles()) > 0) { ?>
+  <table>
+  	<thead>
+    	<tr>
+      	<th>Filename</th><th>Size(Mb)</th><th></th>
+      </tr>
+    </thead>
+    <tbody>  
+  	<?php 
+		$i =0;
+		foreach($this->files->getFiles() as $file) { ?>
+  	<tr>
+    	<td><a href="<?php echo $file; ?>" ><img src="<?php echo $file->getIcon(); ?>" alt="<?php echo $file->getType(); ?>" /> <?php echo $file->getName(); ?></a></td>
+      <td><?php echo $file->getMb(); ?></td>
+      <td><a href="<?php echo $this->url(array('action'=>'confirmdeletefile','cat'=>get_class($this->row->getTable()), 'id'=>$this->row->getID(), 'num'=>$i)); ?>" ><img src="<?php echo ICON_PATH; ?>/cross.png" alt="delete this file" /></td>
+    </tr>
+    <?php $i++; } ?>
+    </tbody>
+  </table>
+  <?php } else { ?>
+		<p>No files found. Add one?</p>
+	<?php } ?>
+  
+</div>
+
+<div >
+	<form enctype="multipart/form-data" method="post" action="<?php echo $this->url(array('action'=>'addfile', 'cat'=>get_class($this->row->getTable()), 'id'=>$this->row->getID())); ?>" >
+  	<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+  	<input type="file" name="upload"  />
+    <input type="submit" class="button upload-button" name="submit" value="upload" />  
+  </form>
+  <br />
+	<br />
+
+</div>

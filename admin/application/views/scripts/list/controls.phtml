@@ -1,0 +1,14 @@
+	<ul class="hz-buttons list-controls" >
+		<li><a href="<?php echo BASE."/edit/show/cat/".get_class($this->model); ?>" class="button add-button" >Add <?php echo $this->model->getSingular(); ?></a></li>
+		<?php if($this->model->getFieldNamesByRole('publishStatus')) { 
+			$pField = $this->model->getFieldNamesByRole('publishStatus');
+		?>
+		<li>Set publish status:</li>
+		<li>
+			<?php echo $this->partial('list/publishSelect.phtml', array('model'=>new PublishStatus(), 'fieldName'=>$pField[0])); ?>
+		</li>
+		<?php } ?>
+		<li>
+			<input type="submit" name="doProcess" value="delete" onclick="dojo.byId('list-form').submit();" class="button delete-button" />
+		</li>
+	</ul>

@@ -1,0 +1,22 @@
+  <dl>
+<?php
+foreach($this->row->getTable()->getFieldsByContext('detail') as $fieldName => $info)
+{ 
+
+if(isset($info['roles']) && in_array('description', $info['roles'])) continue;
+if(isset($info['private']) && $info['private'] == 1 && !$this->user) continue;
+
+?>
+    <dt><?php echo $info['label']; ?></dt>
+    <dd><?php echo $this->fieldRender($this->row, $fieldName); ?>&nbsp;</dd>
+<?php } ?>
+	</dl>
+<?php 
+foreach($this->row->getTable()->getFieldsByRole('description') as $fieldName => $info)
+{ 
+if(strlen($this->row->getDisplayString($fieldName))) {
+?>
+<div dojoType="dijit.TitlePane" open="false" title="<?php echo $info['label']; ?>" class="field-description" ><?php echo nl2br(htmlspecialchars($this->row->getDisplayString($fieldName))); ?></div>
+<?php	
+} }
+?>

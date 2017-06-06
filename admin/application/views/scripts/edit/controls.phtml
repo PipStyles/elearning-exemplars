@@ -1,0 +1,21 @@
+<?php
+$cat = get_class($this->row->getTable());
+$id = $this->row->getID();
+
+$toggleIcon = $this->row->getVisIcon();
+
+$verboseStatus = $this->row->isPrivate() ? 'hidden' : 'shown';
+
+?>
+<div class="list-edit-controls" >
+<ul class="edit-controls list-edit-controls" >
+	<li><input class="checkbox" type="checkbox" name="ids[]" value="<?php echo $id; ?>" /></li>
+  <li>&nbsp;</li>
+  <?php if($this->row->getTable()->canHide() > 9000) { ?>
+	<li><a href="/list/toggle/cat/<?php echo $cat; ?>/id/<?php echo $id; ?>/<?php echo strlen($this->refineString) ? $this->refineString : ""; ?>" title="toggle show/hide. Currently <?php echo $verboseStatus; ?>" ><img src="<?php echo $toggleIcon; ?>" /></a></li>
+	<?php } ?>
+  <li><?php echo $this->partial('edit/editButton.phtml', array('row' => $this->row)); ?></li>
+  <li>&nbsp;</li>
+  <li><?php echo $this->partial('edit/deleteButton.phtml', array('row' => $this->row)); ?></li>
+</ul>
+</div>

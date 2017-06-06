@@ -1,0 +1,6 @@
+AuthType cas 
+Require  valid-user
+
+RewriteEngine on
+RewriteBase /tandl/elearning/exemplars/admin/
+RewriteRule !\.(js|ico|txt|gif|jpg|png|css)$ index.php

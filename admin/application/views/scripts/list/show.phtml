@@ -1,0 +1,20 @@
+<?php $this->model = $this->rowset->getTable(); ?>
+<form id="list-form" action="<?php echo $this->url(array('controller'=>'list','action'=>'process','cat'=>get_class($this->model))); ?>" method="post" >
+<h2>List: <?php echo $this->model->getPlural(); ?></h2>
+<?php echo $this->partial('list/controls.phtml', array('model' => $this->model)); ?>
+<table>
+	<thead>
+			<?php echo $this->partial('list/listHeader.phtml', array('model' => $this->model)); ?>
+	</thead>
+	<tbody>
+<?php
+$singular = $this->rowset->getTable()->getSingular();
+
+foreach($this->rowset as $row)
+{ 
+	echo $this->partial('list/listRow.phtml', array('fieldNames' => $this->model->getFieldNamesByContext('list'), 'row' => $row, 'singular' => $singular));
+}
+?>
+	</tbody>
+</table>
+</form>

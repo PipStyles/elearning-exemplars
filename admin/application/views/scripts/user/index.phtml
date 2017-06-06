@@ -1,0 +1,20 @@
+<h2>Change password</h2>
+<p>This system is currently <strong>not</strong> integrated with LDAP, so use any password you like (minimum length of 6 characters, letters and number only)</p>
+
+<h3>User: <?php echo $this->user->username; ?></h3>
+
+<?php echo $this->form; ?>
+
+<?php 
+
+if(is_array($this->messages)) { ?>
+<h4>Some errors were found with your password:</h4>
+	<?php echo $this->partial('form/message-list.phtml', array('messages' => $this->form->getMessages())); ?>
+<p>Your password has not changed. Please correct the error(s) and try again.</p>
+<?php } ?>
+
+<?php if(strlen($this->success)) { ?>
+<p><img src="<?php echo ICON_PATH;?>/tick.png" /> 
+<?php echo $this->success; ?>
+</p>
+<?php } ?>

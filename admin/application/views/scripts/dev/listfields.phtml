@@ -1,0 +1,74 @@
+<?php
+
+
+foreach($this->tables as $tableName => $fields)
+	{
+	$j = 0;
+	echo $tableName."*********\n\n";	
+			
+	echo "protected static \$_fields = array(\n";
+	
+	foreach($fields as $fieldName => $field)
+		{
+		$i = 0;	
+		echo "  '{$fieldName}' => array(\n";
+		
+		foreach($field as $param_name => $param_value)
+			{
+			
+				
+			if(is_array($param_value))
+				{
+				echo "    '{$param_name}'=>array(";
+				
+				$arrParams = array();
+				foreach($param_value as $subValue)
+					{
+					$arrParams[] =  "'".$subValue."'";
+					}
+				echo implode(' ,',$arrParams);
+				echo ")";
+				}
+			elseif(is_int($param_value))
+				{
+				echo "    '{$param_name}'=>{$param_value}";
+				}
+			
+			else
+				{
+				echo "    '{$param_name}'=>'{$param_value}'";
+				}
+			
+			
+			
+			if($i < count($field)-1)
+				{
+				echo ",\n";
+				}
+			else
+				{
+				echo ")";
+				}
+			$i ++;
+			}
+		
+			
+		if($j < count($fields)-1)
+			{
+			echo ",\n";
+			}
+		else
+				{
+				echo "\n    );\n\n\n";
+				}
+		
+			
+		$j++;
+		}
+		
+	
+	
+	echo "";
+	}
+
+?>

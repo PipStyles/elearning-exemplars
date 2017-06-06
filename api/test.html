@@ -1,0 +1,25 @@
+<html>
+<head>
+        <script LANGUAGE="javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script LANGUAGE="javascript" SRC="js/json2.js"></script>
+        <script LANGUAGE="javascript" SRC="js/jquery.zend.jsonrpc.js"></script>
+        <script>
+         
+				 $(document).ready(function(){            
+						var result = hum_exemplar_rpc.allExemplars();
+						console.log(result);
+						$.each(result, function(i, r) {
+							
+							$("#result").append("<h3>"+ r.exemplarTitle +"</h3>").append("<div>"+ r.exemplarDescription+"</div>");
+						});
+                });
+        </script>
+</head>
+<body>
+
+<div id="result">
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?php
+$model = $this->row->getTable();
+
+$image = $this->row->getImage();
+$original = $image->getOriginal();
+
+?>
+<h2><?php echo $model->getSingular(); ?>: <?php echo $this->row->getTitle(); ?></h2>
+<div class="image-current" >
+
+<?php if($image->hasImage()) { ?><img title="<?php echo $this->row->getTitle(); ?>" src="<?php echo $image->getWeb(); ?>" />
+<?php } 
+	else { 
+?>
+	<div class="icon-box info-box" >
+		This <?php echo $model->getSingular(); ?> has no image and is currently using the default image for its category (shown below).</div>
+	<p><img src="<?php echo $image->getThumb(); ?>" /></p>
+<?php } ?>
+
+<?php if(strlen($this->errorMessage)) { 
+	echo $this->partial('utils/error-box.phtml', array('message' => $this->errorMessage)); }
+?>
+
+</div>
+
+<div class="fixed-footer" >
+<div id="image-edit-form" >
+	<?php echo $this->imageForm; ?>
+	<a href="javascript:closeLaunched();" class="button close-button" >close</a>
+</div>
+</div>

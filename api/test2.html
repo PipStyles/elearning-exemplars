@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+		<script type="text/javascript" language="javascript" src="hum_exemplar_api.js" ></script>
+    
+    <script>
+		 //page logic here 
+		 var exemplars;
+		 
+		 var hum_exemplar_page = function() {
+			 
+			   //testing value
+				 $.ajaxSetup({cache:false});
+			   
+			   exemplars = hum_exemplar_rpc.exemplars({"hasFunding":"TLEF"});
+				 
+				 $.getScript("js/jquery-tmpl.js", function() {
+						//get template engine and render when loaded
+						//prepare exemplar row template
+						$.get('templates/exemplars.html', function(t) {
+								
+								var output = Mustache.render(t, {"exemplars":exemplars});
+								$(output).appendTo('body');
+						});	
+						
+						
+						
+				  });
+				 
+				 
+				 
+				 }
+		 
+    </script>
+    
+    
+</head>
+<body>
+
+
+</body>
+</html>

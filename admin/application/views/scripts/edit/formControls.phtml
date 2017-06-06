@@ -1,0 +1,17 @@
+<?php
+$cat = get_class($this->row->getTable());
+$id = $this->row->getID();
+
+$toggleIcon = $this->row->getVisIcon();
+$verboseStatus = $this->row->isPrivate() ? 'hidden' : 'shown';
+
+?>
+<ul class="form-edit-controls" >
+	<?php if($this->row->getTable()->hasImage()) { ?>
+	<li><a href="#" onclick="launchImageEdit('<?php echo $cat ?>' , <?php echo $id; ?>);" ><img src="<?php echo ICON_PATH; ?>/camera_edit.png" title="edit image" /></a></li>
+	<?php } ?>
+	<?php if($this->row->getTable()->canHide()) { ?>
+	<li><a href="/edit/toggle/cat/<?php echo $cat; ?>/id/<?php echo $id; ?>" title="toggle show/hide. Currently <?php echo $verboseStatus; ?>" ><img src="<?php echo $toggleIcon; ?>" /></a></li>
+  <?php } ?>
+  <li><?php echo $this->partial('edit/deleteButton.phtml', array('row' => $this->row)); ?></li>
+</ul>

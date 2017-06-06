@@ -1,0 +1,21 @@
+<?php 
+if(!count($this->exemplars))
+{?>
+<p>No exemplars were found</p>	
+<?php
+	exit;
+} ?>
+
+<table>
+	<thead>
+		<tr>
+			<td>id</td><td>exemplar title</td><td>exemplar type</td>
+		</tr>
+	</thead>
+<?php
+foreach($this->exemplars as $exemplar)
+{
+	echo $this->partial('list/exemplarRow.phtml', array('row' => $exemplar)); 
+}
+?>
+</table>

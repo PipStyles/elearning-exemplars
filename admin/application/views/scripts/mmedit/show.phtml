@@ -1,0 +1,52 @@
+<?php 
+$destModel = $this->selected->getTable();
+$srcModel = $this->row->getTable();
+
+?>
+
+<h1>[<?php echo ucfirst($destModel->getPlural()); ?>]</h1>
+<h2><?php echo $srcModel->getSingular(); ?>: <?php echo $this->row->getTitle(); ?></h2>
+
+<form action="<?php echo BASE; ?>/mmedit/save/cat/<?php echo get_class($srcModel); ?>/id/<?php echo $this->row->getID(); ?>/destcat/<?php echo get_class($destModel); ?>" method="post" >
+
+<?php if(count($this->selected)) { ?>
+<div id="mmedit-selected" >
+<h4>Currently connected:</h4>
+<ul>
+<?php foreach($this->selected as $sRow) {	?>
+	<li><input type="checkbox" checked="true" name="ids[]" value="<?php echo $sRow->getID(); ?>" /><?php echo $sRow->getTitle(); ?></li>
+	<?php } ?>
+</ul>
+</div>
+<?php } ?>
+<?php if(@count($this->unselected) > 0) { ?>
+<div id="mmedit-unselected" >
+<h4>Currently unconnected:</h4>
+<ul>
+<?php
+if(isset($this->groupField))
+{
+	$groupValue = null;
+	$groupField = $this->groupField;
+}
+
+foreach($this->unselected as $uRow)
+{
+	if(isset($this->groupField) && $uRow->$groupField != $groupValue)
+	{
+	?>
+	<li class="heading" ><h3><?php echo $uRow->getDisplayString($groupField); $groupValue = $uRow->$groupField; ?></h3></li>
+	<?php } ?>
+<li><input type="checkbox"  name="ids[]" value="<?php echo $uRow->getID(); ?>" /><?php echo $uRow->getTitle(); ?></li>
+<?php } ?>
+</ul>
+</div>
+<?php } ?>
+
+<div class="fixed-footer" >
+	<ul class="hz-buttons" >
+		<li><input type="submit" class="button save-button" value="save" /></li>
+		<li><a href="" onClick="opener.location.reload(); self.close();" class="button close-button" >close</a></li>
+	</ul>
+</div>
+</form>

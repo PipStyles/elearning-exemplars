@@ -1,0 +1,117 @@
+html, body {
+	/*height:100%;*/
+	min-height:100%;
+}
+
+body {
+	background-color:#303336;
+	color:#eee;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serifTahoma, Geneva, sans-serif;
+	font-size:0.8em;
+	line-height:1.33em;
+	background-image:url("/images/ipow_bg_dark.png")
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom:1em;
+	font-weight:normal;
+}
+
+h1 {
+	font-size:2em;
+	font-weight:bold;
+}
+
+h1 a {
+	font-weight:bold;
+}
+
+h2 {font-size:1.4em;}
+h3 {font-size:1.3em;}
+h4 {font-size:1.2em;}
+h5 {font-size:1.1em;}
+h6 {font-size:1em;}
+
+table {
+	width:100%;
+	border:1px solid #455;
+}
+
+thead, tr {
+	border-bottom:1px solid #455;
+}
+
+td, th {
+	padding:0.5em;
+	background-color:#36393C;
+	border-right:1px solid #404949;
+}
+
+th {
+	background-color:#36393C;
+	
+}
+
+td {
+	background-color:#393C3F;
+}
+
+
+p, ul, ol, dl, table, legend {
+	margin-bottom:1em;
+}
+
+li, dt, dd {
+	margin-bottom:0.5em;
+}
+
+form {
+	margin:0;
+	padding:0;
+}
+
+
+a, a:link, a:visited, a:hover, a:active {
+	color:#F90;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+dt {
+	display:block;
+	float:left;
+	width:200px;
+	text-align:right;
+	margin-right:1em;
+	line-height:1.4em;
+	font-size:1em;
+}
+
+dd {
+	display:block;
+	float:left;
+	width:200px;
+	text-align:left;
+	line-height:1.4em;
+	font-size:1em;
+}
+
+
+label {
+	margin-bottom:0.5em;
+}
+
+input.text, select {
+	margin-bottom:0.5em;
+}
+
+ol {
+	list-style:decimal;
+	padding-left:2em;
+}
+
+legend {
+	display:block;
+	font-size:1.2em;
+}
+

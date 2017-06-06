@@ -1,0 +1,17 @@
+<?php 
+$this->model = $this->row->getTable();
+?>
+
+<div  id="delete-confirm-box"  >
+	<p>Are you sure you want to delete the file &quot;<?php echo $this->file->getName(); ?> &quot; from the <?php echo $this->model->getSingular(); ?> [<?php echo $this->row->getTitle(); ?>] ?</p>
+  
+  <ul class="hz-nav" >
+  	<li>
+  		<a href="<?php echo $this->url(array('action'=>'dodeletefile','cat'=>get_class($this->model),'id'=>$this->row->getID(),'num'=>$this->num)); ?>" class="button confirm-delete-button" >Yes</a>
+    </li>
+  	<li>
+  		<a href="<?php echo $this->url(array('action'=>'show','cat'=>get_class($this->model),'id'=>$this->row->getID())); ?>" class="button cancel-button" >Cancel</a>
+  	</li>
+  <br />
+
+</div>

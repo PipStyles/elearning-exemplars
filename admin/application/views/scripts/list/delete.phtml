@@ -1,0 +1,48 @@
+<?php
+
+$cat = get_class($this->rowset->getTable());
+
+$plural = $this->rowset->getTable()->getPlural();
+$singular = $this->rowset->getTable()->getSingular();
+
+$ids = array();
+
+if(count($this->rowset) == 1)
+{
+	$ids[] = $id = $this->rowset->current()->getID();
+	$conf = "Are you sure you want to delete this {$singular}?";
+	$return = $this->url(array('controller'=>'edit','action'=>'show','cat'=>$cat,'id'=>$id), null, true);
+}
+else
+{
+	$conf = "Are you sure you want to delete these {$plural}?";
+	$return = $this->url(array('controller'=>'list','action'=>'show','cat'=>$cat), null, true);
+	foreach($this->rowset as $row)
+	{
+		$ids[] = $row->getID();
+	}
+	
+}
+
+?>
+<div id="delete-confirm-box" >
+<h2>Delete Confirmation:</h2>
+<p><?php echo $conf; ?></p>
+<ul class="delete-confirm-list" >
+<?php foreach($this->rowset as $row)
+{ 
+$ids[] = $row->getID();
+?>
+	<li>[<?php echo $row->getID(); ?>] <?php echo $row->getTitle(); ?></li>
+<?php
+}
+?>
+</ul>
+<form action="<?php echo $this->url(array('controller'=>'edit','action'=>'dodelete','cat'=>$cat),null,true); ?>" method="post" >
+<?php foreach($ids as $this_id) { ?>
+<input type="hidden" name="ids[]" value="<?php echo $this_id; ?>" />
+<?php } ?>
+<input type="submit" name="submit" value="Yes - delete" id="delete-confirm" class="button confirm-delete-button" />
+<a href="<?php echo $return; ?>" id="delete-cancel" class="button cancel-button" >Cancel</a>
+</form>
+</div>

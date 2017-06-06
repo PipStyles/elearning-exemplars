@@ -1,0 +1,7 @@
+	<th class="checkbox-col" ></th>
+	<th class="icon-col" ></th>
+	<th class="id-col" >id</th>
+<?php foreach($this->model->getFieldsByContext('list') as $fieldName => $field) { ?>
+	<th><?php echo $this->model->getFieldLabel($fieldName); ?></th>
+<?php } ?>
+	<th class="icon-col" ><img src="<?php echo ICON_PATH; ?>/cross.png" /></th>

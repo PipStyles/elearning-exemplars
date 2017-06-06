@@ -1,0 +1,205 @@
+/* CSS Document */
+.hidden {
+	display:none;
+}
+
+div.scroll {
+ overflow:auto;
+ padding:6px;
+ margin-bottom:0.5em;
+ height:8em;
+ background-color:#333639;
+ border:1px solid #443;
+}
+
+
+div.fixed-footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	padding:1em;
+	border-top:1px solid #566;
+	width:100%;
+	background-color:#303336;
+	opacity:0.9;
+	filter: alpha(opacity=90);
+}
+
+ul.hz-buttons li {
+	float:left;
+	padding:0;
+	margin-right:0.5em;
+}
+
+li.heading {
+	border-bottom:1px solid #36393a;
+	border-top:1px solid #36393a;
+	margin-top:1em;
+	padding-top:0.5em;
+}
+
+
+
+p.hint {
+	font-size: 0.8em;
+	color:#AAA;
+}
+
+
+
+
+
+/******* BUTTONS *****/
+
+.button {
+	
+	height:2em;
+	text-align:left;
+	
+	background-repeat:no-repeat;
+	background-position:8px 50%;
+	
+	background-color:#333639;
+	border:1px solid #554;
+	margin:0.5em;
+	
+	text-decoration:none;
+	font-size:0.9em;
+	color:#fc0;
+	padding:6px 4px 4px 32px;
+	
+}
+
+
+.add-button {
+	background-image:url("/tandl/elearning/images/app_icons/add.png");
+}
+.save-button {
+	background-image:url("/tandl/elearning/images/app_icons/tick.png");
+}
+.delete-button, .cancel-button {
+	background-image:url("/tandl/elearning/images/app_icons/cross.png");
+}
+.confirm-button {
+	background-image:url("/tandl/elearning/images/app_icons/accept.png");
+}
+.back-button {
+	background-image:url("/tandl/elearning/images/app_icons/arrow_left.png");
+}
+.print-button {
+	background-image:url("/tandl/elearning/images/app_icons/printer.png");
+}
+.edit-button {
+	background-image:url("/tandl/elearning/images/app_icons/key_go.png");
+}
+.email-button {
+	background-image:url("/tandl/elearning/images/app_icons/email_go.png");
+}
+.list-button {
+	background-image:url("/tandl/elearning/images/app_icons/application_view_list.png");
+}
+.login-button {
+	background-image:url("/tandl/elearning/images/app_icons/key_go.png");
+}
+.logout-button {
+	background-image:url("/tandl/elearning/images/app_icons/key_delete.png");
+}
+.find-button {
+	background-image:url("/tandl/elearning/images/app_icons/map_magnify.png");
+}
+.confirm-delete-button {
+	background-image:url("/tandl/elearning/images/app_icons/tick.png");
+}
+.close-button {
+	background-image:url("/tandl/elearning/images/app_icons/cross.png");
+}
+.refine-button {
+	background-image:url("/tandl/elearning/images/app_icons/magnifier.png");
+}
+.upload-button {
+	background-image:url("/tandl/elearning/images/app_icons/computer_go.png");
+}
+.image-upload-button {
+	background-image:url("/tandl/elearning/images/app_icons/image_add.png");
+}
+
+
+
+/***** ICON BOXES *****/
+
+div.icon-box {
+	margin:1em;
+	padding:1em 1em 1em 3em;
+	
+	min-height:2em;
+	text-align:justify;
+	
+	background-repeat:no-repeat;
+	background-position:1em 1em;
+	
+	border:1px solid #566;
+	
+	font-size:0.9em;
+	color:#CCC;
+}
+
+div.info-box {
+	background-color:#455;
+	background-image:url("/tandl/elearning/images/app_icons/information.png");
+}
+
+div.warning-box {
+	background-color:#322;
+	background-image:url("/tandl/elearning/images/app_icons/error.png");
+	border-color:#600;
+}
+
+div.error-box {
+	background-color:#544;
+	background-image:url("/tandl/elearning/images/app_icons/exclamation.png");
+}
+
+
+
+
+
+.button:hover {
+	background-color:#36393a;
+}
+
+input.yes:hover, .yes:hover {
+	background-color:#303930;
+}
+input.no:hover, .no:hover {
+	background-color:#393333;
+}
+.save-button:hover {
+	background-color:#304030;
+}
+
+
+input.button, button.button {
+	height:2em;
+	font-size:1em;
+	margin-top:-4px;
+	padding-top:0;
+}
+
+input.edit-save-button {
+	margin:0 0 1em 0;
+	width:340px;
+	margin-left:166px;
+	padding:12px 0 12px 32px;
+	height:4em;
+}
+
+
+input.edit-image {
+	width:100px;
+}
+
+
+option.title-option {
+	background-color:#AAA;
+}
+

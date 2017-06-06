@@ -1,0 +1,24 @@
+<?php 
+// application/layouts/scripts/imageedit.phtml
+echo $this->doctype();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" > 
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title>In Place of War - Database</title>
+  <?php 
+		echo $this->headLink()->appendStylesheet(BASE.'/css/import.css');
+	?>
+	<script type="text/javascript" src="/js/mapFunc.js" ></script>
+</head>
+
+<body class="ipow ipow-launched-window" >
+
+<div id="imageEdit-container" >
+	<div id="content" >
+  <?php echo $this->layout()->content ?>
+  </div>
+</div>
+
+</body>
+</html>

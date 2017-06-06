@@ -1,0 +1,50 @@
+/* CSS Document */
+#login-box {
+	margin:4em auto 0 auto;
+	width:auto;
+}
+
+#user-controls {
+	position:absolute;
+	top:1em;
+	right:1em;
+}
+
+
+#edit-controls ul li {
+	float:left;
+	margin-right:0.5em;
+}
+
+#edit-controls ul li a {
+	display:block;
+	width:164px;
+}
+
+#image-edit-form {
+	position:relative;
+	text-align:left;
+	height:3em;
+}
+
+#image-edit-form form {
+	text-align:left;
+}
+
+#image-edit-form form #upload {
+	margin-left:3em;
+}
+
+#image-edit-form label {
+	width:0;
+}
+
+#image-edit-form .close-button {
+	position:absolute;
+	right:1em;
+	bottom:0.5em;
+}
+
+div#edit-files {
+	height:12em;
+}

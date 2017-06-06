@@ -1,0 +1,75 @@
+<?php 
+// detail/show
+$cat = get_class($this->row->getTable()); 
+$id = $this->row->getID();
+
+$descRow = $this->row->getDescendent();
+
+?>
+<div id="detail-thumb" >
+	<img class="detail-thumb" src="<?php echo $this->row->getThumb(); ?>" alt="<?php echo $this->row->getTitle(); ?>" />
+	<br />
+  <?php if($this->user && $this->user->is_contributor) { echo $this->partial('edit/editButton.phtml', array('row' => $this->row)); }?>
+</div>
+
+<div id="detail-row" class="detail-row" >
+<?php 
+echo $this->partial('/detail/row.phtml', array(
+    'row' => $this->row, 'user' => $this->user));
+?>
+	<?php
+  if(@$descRow)
+  { ?>
+  <div id="descendent-row" >
+  <h3><?php echo $descRow->getTable()->getSingular(); ?> information</h3>
+  <?php
+  echo $this->partial('/detail/row.phtml', array(
+      'row' => $descRow));
+  ?>
+  </div>
+  <?php
+  }
+  ?>
+	
+	<?php 
+	if($this->row->hasFiles() && count($this->row->getFiles()->getFiles()))
+	{ ?>
+  <div id="detail-files" >
+  <h3>Files</h3>
+  <div class="scroll" >
+  <ul class="files-list" >
+  <?php		
+		foreach($this->row->getFiles()->getFiles() as $file)
+		{ ?>
+      <li><a title="<?php echo $file->getType(); ?>: <?php echo $file->getTitle(); ?>" href="<?php echo $file->getFile(); ?>" ><img src="<?php echo $file->getIcon(); ?>" /> <?php echo $file->getTitle(); ?></a></li>
+ <?php } ?>
+    </ul>
+	</div>
+ <?php } ?>
+  
+  <div id="detail-backtracks" >
+  <?php
+  foreach($this->row->getBackRefRowsets() as $brAsset)
+  { ?>
+  <h5><img src="<?php echo $brAsset['rowset']->getTable()->getIconSmall(); ?>" /> <?php echo $this->row->getTitle(); ?> is the <strong>'<?php echo $brAsset['label'] ?>'</strong> for the following <strong><?php echo $brAsset['rowset']->getTable()->getPlural(); ?></strong>:</h5>
+  <div class="scroll" >
+  <ul>
+  <?php
+    foreach($brAsset['rowset'] as $brRow)
+    {
+  ?>
+      <li><a href="/detail/show/cat/<?php echo $brAsset['class']; ?>/id/<?php echo $brRow->getID(); ?>" ><?php echo $brRow->getTitle(); ?></a></li>
+  <?php
+    }
+  ?>
+  </ul>
+  </div>
+  <?php } ?>
+  </div>
+  
+</div>
+
+<div id="detail-mmSets" >
+	<?php echo $this->partial('detail/mmSets.phtml', array('row' => $this->row)); ?>
+</div>
+

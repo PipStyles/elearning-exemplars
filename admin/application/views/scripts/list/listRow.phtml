@@ -1,0 +1,9 @@
+<tr>
+	<td class="checkbox-cell" ><input class="input-checkbox" type="checkbox" name="ids[]" value="<?php echo $this->row->getID(); ?>" /></td>
+	<td class="icon-cell" ><a href="<?php echo BASE.'/edit/show/cat/'.get_class($this->row->getTable()).'/id/'.$this->row->getID(); ?>" ><img src="<?php echo ICON_PATH; ?>/page_edit.png" /></a></td>
+	<td class="id-cell" ><?php echo $this->row->getID(); ?></td>
+<?php foreach($this->fieldNames as $fieldName) { ?>
+	<td><?php echo $this->row->getDisplayString($fieldName); ?></td>
+<?php } ?>
+	<td class="icon-cell" ><a href="<?php echo BASE; ?>/edit/delete/cat/<?php echo get_class($this->row->getTable()); ?>/id/<?php echo $this->row->getID(); ?>" title="delete this <?php echo $this->singular; ?>" ><img src="<?php echo ICON_PATH; ?>/cross.png" /></a></td>
+</tr>
