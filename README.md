@@ -1,0 +1,1 @@
+This database app was first developed in 2012. I chose Zend Framework for the backend. It has fit in with some clunky legacy ways of doing things on the institutions servers (other users updating pages using Dreamweaver and Contribute, for example), hence the clumsy separation of the admin application.
